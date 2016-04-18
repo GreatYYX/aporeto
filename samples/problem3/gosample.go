@@ -1,4 +1,4 @@
-package gosample
+package main
 
 import (
 	"bytes"
@@ -104,7 +104,7 @@ func worker(idx int, url string) {
 	buffer.WriteString(fmt.Sprintf("url: %[1]s\n", url))
 	res := wordCount(getContent(url))
 	for k, v := range res {
-		buffer.WriteString(fmt.Sprintf("\t %[1]s: %[2]d\n", k, v))
+		buffer.WriteString(fmt.Sprintf("\t%[1]s: %[2]d\n", k, v))
 	}
 	writeToFile(fmt.Sprintf("url%[1]d.txt", idx + 1), buffer.Bytes())
 	finishChan <- finishSignal
